@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2048</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game">
+    <header class="game__header">
+      <h1 class="game__title">2048</h1>
+      <div class="score">
+        <span class="score__label">Очки</span>
+        <span class="score__value" id="score">0</span>
+      </div>
+    </header>
+
+    <nav class="toolbar" aria-label="Действия">
+      <button class="btn" id="undo-btn" type="button">Отмена хода</button>
+      <button class="btn" id="restart-btn" type="button">Начать заново</button>
+      <button class="btn btn--ghost" id="leaders-btn" type="button">Рекорды</button>
+    </nav>
+
+    <section class="board" id="board" aria-label="Игровое поле">
+      <div class="board__grid" id="grid"></div>
+      <div class="board__tiles" id="tiles"></div>
+
+      <div class="overlay" id="gameover" hidden>
+        <p class="overlay__text" id="gameover-text"></p>
+        <form class="overlay__form" id="save-form">
+          <input class="input" id="name-input" type="text" maxlength="20" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="off">
+          <button class="btn" type="submit">Сохранить результат</button>
+        </form>
+        <button class="btn btn--icon" id="gameover-restart" type="button" aria-label="Начать заново" title="Начать заново">&#8635;</button>
+      </div>
+    </section>
+
+    <div class="controls" id="controls" hidden>
+      <button class="controls__btn controls__btn--up" type="button" data-dir="up" aria-label="Вверх">&#8593;</button>
+      <button class="controls__btn controls__btn--left" type="button" data-dir="left" aria-label="Влево">&#8592;</button>
+      <button class="controls__btn controls__btn--right" type="button" data-dir="right" aria-label="Вправо">&#8594;</button>
+      <button class="controls__btn controls__btn--down" type="button" data-dir="down" aria-label="Вниз">&#8595;</button>
+    </div>
+  </main>
+
+  <div class="modal" id="leaders-modal" hidden>
+    <section class="modal__window" role="dialog" aria-modal="true" aria-labelledby="leaders-title">
+      <h2 class="modal__title" id="leaders-title">Таблица рекордов</h2>
+      <div class="modal__scroll">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Имя</th>
+              <th scope="col">Очки</th>
+              <th scope="col">Дата</th>
+            </tr>
+          </thead>
+          <tbody id="leaders-body"></tbody>
+        </table>
+        <p class="modal__empty" id="leaders-empty" hidden>Рекордов пока нет.</p>
+      </div>
+      <button class="btn" id="leaders-close" type="button">Закрыть</button>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
